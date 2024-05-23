@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>evaluation</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" fxFlex>
+    <mat-label>evaluation</mat-label>
+    <input type="number" min="0" max="10" [(ngModel)]="note" matInput />
+  </mat-form-field>
+  <div class="error" *ngIf="error">
+    {{ error }}
+  </div>
+</div>
+<div fxLayout="row-reverse" fxLayoutGap="10px" mat-dialog-actions>
+  <button mat-raised-button (click)="annuler()" cdkFocusInitial>annuler</button>
+  <button mat-raised-button color="primary" (click)="confirm()">ok</button>
+</div>

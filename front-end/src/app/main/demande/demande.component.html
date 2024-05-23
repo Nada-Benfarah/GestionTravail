@@ -1,0 +1,89 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start center">
+  <div class="content" fxLayout="column" fxLayoutGap="20px">
+    <div [formGroup]="addForm" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>type</mat-label>
+        <mat-select
+          formControlName="type"
+          (selectionChange)="selectionChange($event)"
+        >
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        *ngIf="addForm.controls['type'].value === 'autorisation'"
+      >
+        <mat-label>autorisation date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="aut_date" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        *ngIf="addForm.controls['type'].value === 'conge'"
+      >
+        <mat-label>date de debut</mat-label>
+        <input matInput [matDatepicker]="start" formControlName="start_date" />
+        <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+        <mat-datepicker #start></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        *ngIf="addForm.controls['type'].value === 'conge'"
+      >
+        <mat-label>date de fin</mat-label>
+        <input matInput [matDatepicker]="end" formControlName="end_date" />
+        <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+        <mat-datepicker #end></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        *ngIf="addForm.controls['type'].value === 'autorisation'"
+      >
+        <mat-label>Heure de début</mat-label>
+        <input
+          matInput
+          [format]="24"
+          [ngxTimepicker]="from"
+          formControlName="start_time"
+        />
+        <ngx-material-timepicker-toggle
+          [for]="from"
+          matSuffix
+        ></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #from></ngx-material-timepicker>
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        *ngIf="addForm.controls['type'].value === 'autorisation'"
+      >
+        <mat-label>Heure de fin</mat-label>
+        <input
+          matInput
+          [format]="24"
+          [ngxTimepicker]="to"
+          formControlName="end_time"
+        />
+        <ngx-material-timepicker-toggle
+          [for]="to"
+          matSuffix
+        ></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #to></ngx-material-timepicker>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row-reverse">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="addForm.invalid"
+        (click)="addDemande()"
+      >
+        ajouter
+      </button>
+    </div>
+  </div>
+</div>

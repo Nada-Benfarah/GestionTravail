@@ -1,0 +1,81 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <app-loading></app-loading>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="container" fxLayout="column" fxLayoutAlign="start center">
+    <div class="content" fxLayout="column" fxLayoutGap="20px">
+      <div
+        *ngFor="let resp of responsables; let i = index"
+        class="resp-container"
+        fxLayout="column"
+        fxLayoutGap="5px"
+      >
+        <div fxLayout="column" fxLayoutGap="5px">
+          <div>
+            <strong>login : </strong>
+            <span>{{ resp.resp_login }}</span>
+          </div>
+          <div>
+            <strong>nom : </strong>
+            <span>{{ resp.resp_lname }}</span>
+          </div>
+          <div>
+            <strong>prenom : </strong>
+            <span>{{ resp.resp_fname }}</span>
+          </div>
+          <div>
+            <strong>role : </strong>
+            <span>{{ resp.resp_role }}</span>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>employee</mat-label>
+            <mat-select [(ngModel)]="selectors[i].responseTo">
+              <mat-option
+                *ngFor="let employee of employees"
+                [value]="employee.user_id"
+              >
+                {{ employee.login }}({{ employee.fname }} {{ employee.lname }})
+              </mat-option>
+            </mat-select>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          <button color="primary" mat-raised-button (click)="addWorkflow(i)">
+            ajouter
+          </button>
+        </div>
+        <div
+          *ngFor="let emp of resp.responseTo; let j = index"
+          class="emp-container"
+          fxLayout="column"
+          fxLayoutGap="3px"
+        >
+          <div>
+            <strong>login : </strong>
+            <span>{{ emp.emp_login }}</span>
+          </div>
+          <div>
+            <strong>nom : </strong>
+            <span>{{ emp.emp_lname }}</span>
+          </div>
+          <div>
+            <strong>prenom : </strong>
+            <span>{{ emp.emp_fname }}</span>
+          </div>
+          <div>
+            <strong>role : </strong>
+            <span>{{ emp.emp_role }}</span>
+          </div>
+          <button
+            class="delete-button"
+            mat-icon-button
+            (click)="deleteWorkflow(resp, emp, i, j)"
+          >
+            <mat-icon>do_disturb_on</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

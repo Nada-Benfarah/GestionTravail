@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta&display=swap");
+
+.btn-active {
+  background-color: #1877f2;
+  color: white;
+  margin-top: 20px;
+}
+
+.btn-disabled {
+  background-color: #d0d1d1;
+  color: black;
+  margin-top: 20px;
+}
+
+.Mukta {
+  font-family: "Mukta", sans-serif;
+}
+
+.login {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+}
+
+.error {
+  position: relative;
+  margin-top: 1rem;
+  line-height: 1.5;
+  background-color: rgb(255, 235, 238);
+  color: rgb(211, 47, 47);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+input[type="password"] {
+  font: 15px Verdana, sans-serif;
+  letter-spacing: 1px;
+}

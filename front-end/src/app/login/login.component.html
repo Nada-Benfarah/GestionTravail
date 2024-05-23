@@ -1,0 +1,62 @@
+<div fxLayout="row" fxLayoutAlign="center center" (keyup.enter)="login()">
+  <div class="login">
+    <h1 style="text-align: center">
+      <span class="Mukta">Gestion de travaille login</span>
+    </h1>
+    <div fxLayout="column">
+      <mat-divider></mat-divider>
+      <div
+        [formGroup]="loginForm"
+        fxLayout="column"
+        fxLayoutAlign="start stretch"
+        style="padding: 20px"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label><span class="Mukta">utilisateur</span></mat-label>
+          <input formControlName="username" matInput />
+          <mat-error
+            *ngIf="loginForm.controls['username'].hasError('required')"
+          >
+            utilisateur est <strong>obligatoire</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label><span class="Mukta">mot de passe</span></mat-label>
+          <input
+            formControlName="password"
+            matInput
+            [type]="password_icon === 'visibility_off' ? 'text' : 'password'"
+          />
+          <button
+            matSuffix
+            mat-icon-button
+            style="cursor: pointer"
+            *ngIf="loginForm.controls['password'].value.length !== 0"
+            (click)="password_icon_click()"
+          >
+            <mat-icon>{{ password_icon }}</mat-icon>
+          </button>
+
+          <mat-error
+            *ngIf="loginForm.controls['password'].hasError('required')"
+          >
+            mot de passe est <strong>obligatoire</strong>
+          </mat-error>
+        </mat-form-field>
+        <button
+          [disabled]="loginForm.invalid"
+          (click)="login()"
+          mat-raised-button
+          [ngClass]="{
+            'btn-active': loginForm.valid,
+            'btn-disabled': loginForm.invalid
+          }"
+          cdkFocusInitial
+        >
+          <span class="Mukta">Connexion</span>
+        </button>
+        <div *ngIf="error" class="error">{{ error }}</div>
+      </div>
+    </div>
+  </div>
+</div>

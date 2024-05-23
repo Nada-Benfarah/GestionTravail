@@ -1,0 +1,59 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start center">
+  <div class="content" fxLayout="column">
+    <div [formGroup]="updateForm" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>nom</mat-label>
+        <input formControlName="lname" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>prenom</mat-label>
+        <input matInput formControlName="fname" />
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>login</mat-label>
+        <input matInput formControlName="login" />
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+      <mat-form-field *ngIf="this.user.role !== 'admin'" appearance="outline">
+        <mat-label>email</mat-label>
+        <input matInput formControlName="email" />
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+      <mat-checkbox
+        [(ngModel)]="checked"
+        [ngModelOptions]="{ standalone: true }"
+        (change)="toggleChange($event)"
+      >
+        modifier mot de pass
+      </mat-checkbox>
+      <div *ngIf="checked" fxLayout="column">
+        <mat-form-field appearance="outline">
+          <mat-label>ancien mot de passe</mat-label>
+          <input type="password" matInput formControlName="old_password" />
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        <mat-form-field *ngIf="checked" appearance="outline">
+          <mat-label>mot de passe</mat-label>
+          <input type="password" matInput formControlName="password" />
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        <mat-form-field *ngIf="checked" appearance="outline">
+          <mat-label>confirm mot de passe</mat-label>
+          <input type="password" matInput formControlName="password_confirm" />
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row-reverse" mat-dialog-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="updateForm.invalid"
+        (click)="updateUser()"
+      >
+        modifier
+      </button>
+    </div>
+  </div>
+</div>

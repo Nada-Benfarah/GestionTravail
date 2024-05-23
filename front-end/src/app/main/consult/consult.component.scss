@@ -1,0 +1,46 @@
+:host {
+  .container {
+    padding: 20px;
+
+    .content {
+      max-width: 500px;
+      width: 100%;
+
+      .demande-container {
+        width: 100%;
+        border: solid 3px #3f51b5;
+        border-radius: 10px;
+        padding: 20px;
+
+        ::ng-deep {
+          .mat-form-field-wrapper {
+            padding: 0 !important;
+          }
+        }
+
+        .response-container {
+          position: relative;
+          width: 100%;
+          border-radius: 10px;
+          padding: 10px;
+
+          .fiche-de-paie {
+            .fp-prev::before {
+              font-family: "Font Awesome 5 Free";
+              content: "\f019  ";
+              font-weight: 900;
+            }
+          }
+
+          &.accepted {
+            background-color: rgba($color: green, $alpha: 0.3);
+          }
+
+          &.refused {
+            background-color: rgba($color: red, $alpha: 0.3);
+          }
+        }
+      }
+    }
+  }
+}

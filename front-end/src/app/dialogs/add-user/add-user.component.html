@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>ajouter utilisateur</h1>
+<div mat-dialog-content>
+  <div [formGroup]="addForm" fxLayout="column">
+    <mat-form-field appearance="outline">
+      <mat-label>nom</mat-label>
+      <input formControlName="lname" matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>prenom</mat-label>
+      <input matInput formControlName="fname" />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>e-mail</mat-label>
+      <input matInput formControlName="email" />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>login</mat-label>
+      <input matInput formControlName="login" />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>mot de passe</mat-label>
+      <input matInput formControlName="password" />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{ role }}
+        </mat-option>
+      </mat-select>
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row-reverse" fxLayoutGap="10px" mat-dialog-actions>
+  <button mat-raised-button (click)="annuler()" cdkFocusInitial>annuler</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="addForm.invalid"
+    (click)="addUser()"
+  >
+    ajouter
+  </button>
+</div>

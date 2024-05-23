@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <h4>{{ data.message }}</h4>
+</div>
+<div fxLayout="row-reverse" fxLayoutGap="10px" mat-dialog-actions>
+  <button mat-raised-button (click)="close()" cdkFocusInitial>ok</button>
+</div>

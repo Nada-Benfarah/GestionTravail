@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sql2949
+      MYSQL_DATABASE: gestion_travaille
+    restart: unless-stopped
+  frontend:
+    build: ./front-end
+    ports:
+      - 4000:80
+    restart: unless-stopped
+  backend:
+    build: ./back-end
+    ports:
+      - 3000:3000
+    environment:
+      HOST: db
+      DB_USER: root
+      DB_USER_PWD: sql2949
+      DB_NAME: gestion_travaille
+      TOKEN_SECRET: "CDrE72I2j2A5SsZPEzIzwX8ame/0h09KdTvDUSNdZnM="
+    depends_on:
+      - db
+    restart: unless-stopped
+volumes:
+  db-data:

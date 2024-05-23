@@ -1,0 +1,41 @@
+:host {
+  .example-spacer {
+    flex: 1;
+  }
+
+  .container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    mat-toolbar {
+      z-index: 3;
+      box-shadow: 2px 2px 20px 1px rgb(0 0 0 / 20%);
+    }
+
+    .main-container {
+      position: relative;
+
+      .side-nav {
+        width: 240px;
+        height: 100%;
+        background-color: whitesmoke;
+        position: relative;
+      }
+
+      .main {
+        position: relative;
+        .content {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          overflow: auto;
+        }
+      }
+    }
+  }
+}

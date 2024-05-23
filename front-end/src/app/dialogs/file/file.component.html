@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>evaluation</h1>
+<div mat-dialog-content>
+  <div
+    class="p10"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="10px"
+  >
+    <button type="button" mat-raised-button (click)="fileInput.click()">
+      Choose File
+    </button>
+    <span>{{ file?.name }}</span>
+    <input
+      hidden
+      (change)="onFileSelected($event)"
+      #fileInput
+      accept="application/pdf"
+      type="file"
+    />
+  </div>
+  <div class="error" *ngIf="error">
+    {{ error }}
+  </div>
+</div>
+<div fxLayout="row-reverse" fxLayoutGap="10px" mat-dialog-actions>
+  <button mat-raised-button (click)="annuler()" cdkFocusInitial>annuler</button>
+  <button mat-raised-button color="primary" (click)="confirm()">ok</button>
+</div>

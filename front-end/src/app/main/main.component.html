@@ -1,0 +1,23 @@
+<div *ngIf="user" class="container" fxLayout="column">
+  <mat-toolbar color="primary">
+    <span>gestion de travaille</span>
+    <span class="example-spacer"></span>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>account_circle</mat-icon>
+      <span>{{ user.login }} ({{ user.fname }} {{ user.lname }})</span>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="main-container" fxLayout="row" fxFlex>
+    <div class="side-nav">
+      <app-side-nav [role]="user.role"></app-side-nav>
+    </div>
+    <div class="main" fxFlex>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

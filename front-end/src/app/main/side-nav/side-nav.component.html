@@ -1,0 +1,155 @@
+<!--routes for admin-->
+<div
+  *ngIf="role === 'admin'"
+  class="container"
+  fxLayout="column"
+  fxLayoutGap="10px"
+>
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/users']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>manage_accounts</mat-icon>
+      <span>gerer les utilisateurs</span>
+    </div>
+  </a>
+
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/demandes']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>reorder</mat-icon>
+      <span>gerer les demandes</span>
+    </div>
+  </a>
+
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/workflow']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>supervisor_account</mat-icon>
+      <span>gerer workflow</span>
+    </div>
+  </a>
+
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/settings']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>settings</mat-icon>
+      <span>parametre profile</span>
+    </div>
+  </a>
+</div>
+
+<!--routes for responsable-->
+
+<div
+  class="container"
+  fxLayout="column"
+  fxLayoutGap="10px"
+  *ngIf="role === 'responsable'"
+>
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/demande']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>add_circle</mat-icon>
+      <span>ajouter demande</span>
+    </div>
+  </a>
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/consult']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>format_list_numbered_rtl</mat-icon>
+      <span>consulter demandes</span>
+    </div>
+  </a>
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/demandes']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>reorder</mat-icon>
+      <span>gerer les demandes</span>
+    </div>
+  </a>
+
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/settings']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>settings</mat-icon>
+      <span>parametre profile</span>
+    </div>
+  </a>
+</div>
+
+<!--routes for user-->
+
+<div
+  class="container"
+  fxLayout="column"
+  fxLayoutGap="10px"
+  *ngIf="role === 'user'"
+>
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/demande']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>add_circle</mat-icon>
+      <span>ajouter demande</span>
+    </div>
+  </a>
+
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/consult']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>format_list_numbered_rtl</mat-icon>
+      <span>consulter demandes</span>
+    </div>
+  </a>
+
+  <a
+    color="primary"
+    mat-button
+    [routerLink]="['/settings']"
+    [routerLinkActive]="'activated'"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <mat-icon>settings</mat-icon>
+      <span>parametre profile</span>
+    </div>
+  </a>
+</div>

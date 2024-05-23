@@ -1,0 +1,80 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <app-loading></app-loading>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="container" fxLayout="column" fxLayoutAlign="start center">
+    <div class="content" fxLayout="column" fxLayoutGap="20px">
+      <div
+        *ngFor="let demande of demandes; let i = index"
+        class="demande-container"
+        fxLayout="column"
+        fxLayoutGap="5px"
+      >
+        <div fxLayout="column" fxLayoutGap="5px">
+          <div>
+            <strong>demande type : </strong>
+            <span>{{ demande.type }}</span>
+          </div>
+          <div *ngIf="demande.type === 'conge'">
+            <strong>de : </strong>
+            <span> {{ demande.start_date | date: "dd/MM/yyyy" }} </span>
+            <strong>a : </strong>
+            <span> {{ demande.end_date | date: "dd/MM/yyyy" }} </span>
+          </div>
+          <div *ngIf="demande.type === 'autorisation'">
+            <strong>le : </strong>
+            <span> {{ demande.start_date | date: "dd/MM/yyyy" }} </span>
+            <strong>de : </strong>
+            <span> {{ demande.start_date | date: "HH:mm:ss" }} </span>
+            <strong>a : </strong>
+            <span> {{ demande.end_date | date: "HH:mm:ss" }} </span>
+          </div>
+          <div>
+            <strong>date de creation : </strong>
+            <span> {{ demande.created_at | date: "dd/MM/yyyy HH:mm:ss" }}</span>
+          </div>
+        </div>
+        <div
+          *ngFor="let reponse of demande.reponses"
+          class="response-container"
+          fxLayout="row"
+          fxLayoutGap="3px"
+          [ngClass]="reponse.response === 'accepted' ? 'accepted' : 'refused'"
+        >
+          <strong>
+            {{ reponse.response === "accepted" ? "accepted" : "refused" }} by
+          </strong>
+          <span>
+            {{ reponse.rb_login }} ({{ reponse.rb_fname }}
+            {{ reponse.rb_lname }})
+          </span>
+          <div
+            *ngIf="
+              demande.type === 'evaluation' && reponse.response === 'accepted'
+            "
+          >
+            <strong>and with evaluation : </strong>
+            <span>{{ reponse.evaluation }}</span>
+          </div>
+          <div fxFlex></div>
+          <div
+            *ngIf="
+              demande.type === 'fiche_de_paie' &&
+              reponse.response === 'accepted' &&
+              reponse.pdf_file
+            "
+          >
+            <a
+              class="fiche-de-paie"
+              [href]="reponse.pdf_file | async"
+              target="_blank"
+              download="fiche_de_paie.pdf"
+            >
+              <i class="fp-prev">download pdf</i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

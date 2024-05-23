@@ -1,0 +1,49 @@
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <app-loading></app-loading>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="container" fxLayout="column" fxLayoutAlign="start center">
+    <div fxLayout="row-reverse" class="add-button">
+      <button mat-button (click)="openAddDialog()">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+          <mat-icon>add_circle</mat-icon>
+          <strong>ajouter utilisateur</strong>
+        </div>
+      </button>
+    </div>
+    <div class="content" fxLayout="column" fxLayoutGap="20px">
+      <div *ngFor="let user of users" class="user-container" fxLayout="row">
+        <div fxLayout="column" fxLayoutGap="5px" fxFlex>
+          <div>
+            <strong>login : </strong>
+            <span>{{ user.login }}</span>
+          </div>
+          <div>
+            <strong>email : </strong>
+            <span>{{ user.email }}</span>
+          </div>
+          <div>
+            <strong>nom : </strong>
+            <span>{{ user.lname }}</span>
+          </div>
+          <div>
+            <strong>prenom : </strong>
+            <span>{{ user.fname }}</span>
+          </div>
+          <div>
+            <strong>role : </strong>
+            <span>{{ user.role }}</span>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button mat-icon-button (click)="deleteUser(user)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button (click)="openUpdateDialog(user)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
